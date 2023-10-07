@@ -19,25 +19,25 @@ class Solution {
             array_push($reversedarray,$substr);
         }
         $truearray = array();
-        array_reverse($reversedarray);
-        for ($i=0; $i<count($reversedarray); $i++) {
-            $reversedarraythisturn = $reversedarray[$i];
+        for ($i=0; $i<count($normalarray); $i++) {
+            $reversedarraythisturn = $reversedarray[count($normalarray)-($i+1)];
             $normalarraythisturn = $normalarray[$i];
-            if($normalarraythisturn == $reversedarraythisturn) {
+//            echo "<br>$i.th turn normal: $normalarraythisturn<br>";
+//            echo "<br>$i.th turn reversed: $reversedarraythisturn<br>";
+            if($reversedarraythisturn == $normalarraythisturn) {
                 array_push($truearray,"True");
             } else {
                 array_push($truearray,"False");
             }
         }
-        $searcharray = array_search("False",$truearray);
-        if($searcharray > 0) {
-            return false;
-        } else{
+        if(!in_array("False",$truearray)) {
             return true;
+        } else {
+            return false;
         }
     }
 }
-$number = 121;
+$number = 145;
 $solution = new Solution();
 print_r($solution->isPalindrome($number));
 ?>
