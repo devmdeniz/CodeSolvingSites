@@ -28,3 +28,7 @@ Constraints:
 
 
 Follow up: Could you solve it without converting the integer to a string?
+
+# Solutions:
+## 1:
+![img.png](images/img.png)

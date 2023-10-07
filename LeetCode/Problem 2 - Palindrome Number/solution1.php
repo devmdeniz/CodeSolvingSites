@@ -6,6 +6,9 @@ class Solution {
      * @return Boolean
      */
     function isPalindrome($x) {
+        if($x < 0 ) {
+            return false;
+        }
         $array = array_map('intval', str_split($x));
         $reversedarray = array();
         for($i=0; $i<count($array); $i++){
