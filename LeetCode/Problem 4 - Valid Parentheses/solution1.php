@@ -11,20 +11,13 @@ class Solution {
             if($i == 0 || $i % 2 == 0) {
                 $firstone = $array[$i];
                 $secondone = $array[$i+1];
-                if($firstone == "(") {
-                    if(in_array(")",$array)){
-                        return true;
-                    }
-                }
-                if($firstone == "["){
-                    if(in_array("]",$array)){
-                        return true;
-                    }
-                }
-                if($firstone == "{") {
-                    if(in_array("}",$array)){
-                        return true;
-                    }
+                $lastone = $array[count($array)-1];
+                if($firstone == "(" && $secondone == ")" || $firstone == "(" && $lastone == ")") {
+                    return true;
+                } else if($firstone == "[" && $secondone == "]" || $firstone == "[" && $lastone == "]") {
+                    return true;
+                } else if($firstone == "{" && $secondone == "}" || $firstone == "{" && $lastone == "}") {
+                    return true;
                 } else {
                     return false;
                 }
