@@ -6,38 +6,26 @@ class Solution {
      * @return Boolean
      */
     function isPalindrome($x) {
-        $normalarray = array();
+        $array = array_map('intval', str_split($x));
         $reversedarray = array();
-        for ($i=0; $i<strlen($x); $i++){
-            if ($i == 0 || $i % 2 == 0) {
-                $number = 1;
-            } else if($i % 2 != 0) {
-                $number = -1;
-            }
-            $substr = substr($x,$i,$number);
-            array_push($normalarray,$substr);
-            array_push($reversedarray,$substr);
+        for($i=0; $i<count($array); $i++){
+            $newelement = $array[count($array)-($i+1)];
+            array_push($reversedarray,$newelement);
         }
-        $truearray = array();
-        for ($i=0; $i<count($normalarray); $i++) {
-            $reversedarraythisturn = $reversedarray[count($normalarray)-($i+1)];
-            $normalarraythisturn = $normalarray[$i];
-//            echo "<br>$i.th turn normal: $normalarraythisturn<br>";
-//            echo "<br>$i.th turn reversed: $reversedarraythisturn<br>";
-            if($reversedarraythisturn == $normalarraythisturn) {
-                array_push($truearray,"True");
+        $truefalse = array();
+        for($i=0; $i<count($array); $i++) {
+            $normalarray = $array[$i];
+            $reversedarraythisturn = $reversedarray[$i];
+            if($normalarray == $reversedarraythisturn) {
+                array_push($truefalse,"True");
             } else {
-                array_push($truearray,"False");
+                array_push($truefalse,"False");
             }
         }
-        if(!in_array("False",$truearray)) {
+        if(!in_array("False",$truefalse)){
             return true;
         } else {
             return false;
         }
-    }
-}
-$number = 145;
-$solution = new Solution();
-print_r($solution->isPalindrome($number));
+    }}
 ?>
