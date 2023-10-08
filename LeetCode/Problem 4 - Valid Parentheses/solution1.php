@@ -7,26 +7,40 @@ class Solution {
      */
     function isValid($s) {
         $array = str_split($s);
-        for ($i=0; $i<count($array); $i++){
-            if($i == 0 || $i % 2 == 0) {
+        $truefalse = array();
+        for ($i=0;$i<count($array); $i++){
+            if($i == 0){
                 $firstone = $array[$i];
-                $secondone = $array[$i+1];
-                $lastone = $array[count($array)-1];
-                if($firstone == "(" && $secondone == ")" || $firstone == "(" && $lastone == ")") {
-                    return true;
-                } else if($firstone == "[" && $secondone == "]" || $firstone == "[" && $lastone == "]") {
-                    return true;
-                } else if($firstone == "{" && $secondone == "}" || $firstone == "{" && $lastone == "}") {
-                    return true;
+                $lastone = $array[intval(count($array)-1)];
+            } else if ($i != 0 && $i != intval(count($array)-1)){
+                $middleone = $array[$i];
+                if(($i+1) != count($array)){
+                    $laterone = $array[$i+1];
                 } else {
-                    return false;
+                    $laterone = $middleone;
                 }
             }
+            if(isset($firstone)){
+            if($firstone == "(" && $lastone == ")" || $firstone == "[" && $lastone == "]" || $firstone == "{" && $lastone == "}"){
+                array_push($truefalse,"True");
+            }}
+            if($i % 2 == 0 && $i !=0) {
+                if($middleone == "[" && $laterone == "]" || $middleone == "{" && $laterone == "}" || $middleone == "(" && $middleone == ")"){
+                    array_push($truefalse,"True");
+                }
+            } else {
+                array_push($truefalse,"False");
+            }
+        }
+        if(!in_array("False",$truefalse)) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
 
-$sdata = "(]";
+$sdata = "{[]}";
 $Solution = new Solution();
 echo $Solution->isValid($sdata);
 ?>
