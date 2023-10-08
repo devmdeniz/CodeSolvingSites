@@ -1,6 +1,7 @@
 <?php
 
-class Solution {
+class Solution
+{
 
     /**
      * @param Integer $x
@@ -10,14 +11,15 @@ class Solution {
     {
         $reversedarray = array();
         for ($i = 0; $i < count($array); $i++) {
-            $lastone = $array[count($array)-($i+1)];
-            array_push($reversedarray,$lastone);
+            $lastone = $array[count($array) - ($i + 1)];
+            array_push($reversedarray, $lastone);
         }
         return $array = $reversedarray;
     }
 
-    function reverse($x) {
-        if($x < 0 ) {
+    function reverse($x)
+    {
+        if ($x < 0) {
             $negative = 1;
         } else {
             $negative = 0;
@@ -25,16 +27,20 @@ class Solution {
         $numberarray = str_split($x);
         $numberarray = $this->ReverseArray($numberarray);
         $numberarray = intval(implode("", $numberarray));
-        if($negative == 1) {
+        if ($numberarray >= 2147483648 || $numberarray <= -2147483648) {
+            $numberarray = 0;
+            return $numberarray;
+        }
+        if ($negative == 1) {
             return intval(-$numberarray);
         } else {
             return $numberarray;
         }
+
     }
 }
+
 $x = -145;
 $Solution = new Solution();
 echo $Solution->reverse($x);
-
-
 ?>
