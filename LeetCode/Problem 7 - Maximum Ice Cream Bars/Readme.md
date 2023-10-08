@@ -39,3 +39,4 @@ costs.length == n
 
 ## 1:
 
+![img.png](images/img.png)

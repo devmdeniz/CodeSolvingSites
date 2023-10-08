@@ -14,14 +14,14 @@ class Solution
         $money = intval($coins);
         sort($costs);
         foreach ($costs as $value) {
-//            echo "$number. Money: $money; $value. <br>";
             if ($money <= 0) {
                 return $number;
-            } else {
+            } else if ($money >= $value) {
                 $money -= $value;
                 $number++;
             }
         }
+        return $number;
     }
 }
 
