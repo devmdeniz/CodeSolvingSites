@@ -10,6 +10,7 @@ class Solution
     function minOperations($nums)
     {
         sort($nums);
+        $nums = array_unique($nums);
         print_r($nums);
         $oldnumber = $nums[0];
         $truefalse = 0;
