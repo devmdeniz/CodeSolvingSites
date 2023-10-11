@@ -11,15 +11,19 @@ class Solution
     {
         sort($nums);
         $nums = array_unique($nums);
-        print_r($nums);
+        print_r($nums
+        );
         $oldnumber = $nums[0];
         $truefalse = 0;
         for ($i = 1; $i < count($nums); $i++) {
-            $mustarraynum = $oldnumber + 1;
-            if ($mustarraynum != $nums[$i]) {
-                $truefalse++;
+            if (!empty($nums[$i]) || isset($nums[$i])) {
+                $mustarraynum = $oldnumber + 1;
+                if ($mustarraynum != $nums[$i]) {
+                    $truefalse++;
+                    echo $i;
+                }
+                $oldnumber = $nums[$i];
             }
-            $oldnumber = $nums[$i];
         }
         return $truefalse;
     }
