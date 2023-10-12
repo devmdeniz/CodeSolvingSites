@@ -8,9 +8,10 @@ class Solution
      * @param Integer $n
      * @return Float
      */
-    function myPow($x, $n)
+    function myPow(float $x, $n)
     {
-        return pow($x, $n);
+        $x = floatval($x);
+        return (float)pow($x, $n);
     }
 }
 
